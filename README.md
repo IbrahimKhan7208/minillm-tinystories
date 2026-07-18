@@ -4,6 +4,8 @@ A small decoder-only language model, trained from scratch on the [TinyStories](h
 
 This project was built as a hands-on learning exercise — every component (tokenizer, attention mechanism, positional embeddings, training loop) was implemented and understood line-by-line, not copied from an existing implementation.
 
+🚀 **[Try it live on Hugging Face Spaces](https://huggingface.co/spaces/IbrahimKhan7208/minillm-tinystories-demo)**
+
 ## Architecture
 
 - **RMSNorm** — simplified LayerNorm (scale-only, no mean-centering)
