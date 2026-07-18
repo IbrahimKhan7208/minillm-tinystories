@@ -18,15 +18,17 @@ This project was built as a hands-on learning exercise — every component (toke
 
 | | |
 |---|---|
-| Parameters | ~15-18M |
+| Parameters | 18,536,832 (~18.5M) |
+| Model size (fp32) | 74.15 MB |
+| Model size (fp16/bf16) | 37.07 MB |
 | Layers | 8 |
 | d_model | 384 |
-| Attention heads | 8 (query) / 2 (key-value) |
+| Attention heads | 8 (query) / 2 (key-value), GQA |
 | Context length | 256 tokens |
-| Training data | 1,000,000 TinyStories, ~220M tokens |
+| Vocabulary | 16,000 (custom byte-level BPE, trained from scratch) |
+| Training data | 1,000,000 TinyStories (~220M tokens) |
 | Training steps | 13,000 (≈1 epoch) |
-| Final train / val loss | 1.62 / 1.63 |
-| Final perplexity | 5.05 / 5.10 |
+| Final val loss / perplexity | 1.63 / 5.10 |
 
 ## Usage
 
@@ -36,7 +38,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. Download model weights
-Download `minillm_final.pt` and `tokenizer.json` from [Hugging Face](#) *(link added after upload)* and place them in the `weights/` folder.
+Download `minillm_final.pt` and `tokenizer.json` from [Hugging Face](https://huggingface.co/IbrahimKhan7208/minillm-tinystories) and place them in the `weights/` folder.
 
 ### 3. Generate text
 ```bash
@@ -49,7 +51,7 @@ Optional arguments:
 
 ## Training
 
-The full training script is included in `train.py` for transparency and reproducibility. It was run on a Google Colab T4 GPU; training on CPU is not practical due to time (~30-45 min on GPU vs. many hours on CPU).
+The full training script is included in `train.py` for transparency and reproducibility. It was run on a Google Colab T4 GPU; training on CPU is not practical due to time (took ~3.5-4 hours total on GPU vs. many hours or days on CPU).
 
 ```bash
 python train.py
